@@ -1,0 +1,28 @@
+{
+  "name": "kollectjs",
+  "version": "0.0.1",
+  "description": "A small library to work with arrays in Javascript.",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "mocha ./lib/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horinlabs/kollectjs.git"
+  },
+  "keywords": [
+    "collection",
+    "kollectjs"
+  ],
+  "author": "Danilo Oliveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/horinlabs/kollectjs/issues"
+  },
+  "homepage": "https://github.com/horinlabs/kollectjs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "jsdoc": "^3.4.1",
+    "mocha": "^3.0.2"
+  }
+}

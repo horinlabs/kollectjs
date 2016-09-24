@@ -1,7 +1,43 @@
-# CollectJS
-A small javascript library strongly based on Laravel's collections (https://laravel.com/docs/collections)
+# KollectJS
+A small javascript library strongly based on Laravel's collections (https://laravel.com/docs/collections).
+
+How to install:
+
+`npm install kollectjs`
+
+Example of use:
+
+```
+var collection = kollect([
+	{ id: 1, name: 'Bulbasaur', type: 'grass' },
+	{ id: 4, name: 'Charmander', type: 'fire' },
+	{ id: 7, name: 'Squirtle', type: 'blue' }
+]);
+
+collection.count(); //outputs 3
+collection.get(2).name; //outputs 'Squirtle'
+```
+
+Most of methods return a new collection, so you can chain the calls if you want:
+```
+var collection = kollect([
+	{ id: 1, name: 'Bulbasaur', type: 'grass' },
+	{ id: 4, name: 'Charmander', type: 'fire' },
+	{ id: 7, name: 'Squirtle', type: 'water' }
+]);
+
+collection
+	.union([
+		{ id: 152, name: 'Chikorita', type: 'grass' },
+		{ id: 155, name: 'Cindaquil', type: 'fire' },
+		{ id: 158, name: 'Totodile', type: 'water' }
+	])
+	.where('type', 'water')
+	.all(); //outputs '[{ id: 7, name: 'Squirtle', type: 'water' }, { id: 158, name: 'Totodile', type: 'water' }]'
+```
 
 * * *
+## API documentation
 
 ### all()
 
@@ -15,7 +51,7 @@ Get the average value of a given key.
 
 **Parameters**
 
-**callback**: `string | function`, Get the average value of a given key.
+**callback**: `string | function`
 
 **Returns**: `*`
 
@@ -25,15 +61,15 @@ Chunk the underlying collection array.
 
 **Parameters**
 
-**size**: `int`, Chunk the underlying collection array.
+**size**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### collapse()
 
 Collapse the collection of items into a single array.
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### combine(values)
 
@@ -41,9 +77,9 @@ Create a collection by using this collection for keys and another for its values
 
 **Parameters**
 
-**values**: `*`, Create a collection by using this collection for keys and another for its values.
+**values**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### contains(key, value)
 
@@ -51,11 +87,11 @@ Determine if an item exists in the collection.
 
 **Parameters**
 
-**key**: `*`, Determine if an item exists in the collection.
+**key**: `*`
 
-**value**: `*`, Determine if an item exists in the collection.
+**value**: `*`
 
-**Returns**: , bool
+**Returns**: bool
 
 ### containsStrict(key, value)
 
@@ -63,17 +99,17 @@ Determine if an item exists in the collection using the strict mode.
 
 **Parameters**
 
-**key**: `*`, Determine if an item exists in the collection using the strict mode.
+**key**: `*`
 
-**value**: `*`, Determine if an item exists in the collection using the strict mode.
+**value**: `*`
 
-**Returns**: , bool
+**Returns**: bool
 
 ### count()
 
 Count the number of items in the collection.
 
-**Returns**: , int
+**Returns**: int
 
 ### diff(items)
 
@@ -81,9 +117,9 @@ Get the items in the collection that are not present in the given items.
 
 **Parameters**
 
-**items**: `*`, Get the items in the collection that are not present in the given items.
+**items**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### each(callback)
 
@@ -91,9 +127,9 @@ Execute a callback over each item.
 
 **Parameters**
 
-**callback**: `function`, Execute a callback over each item.
+**callback**: `function`
 
-**Returns**: , this
+**Returns**: this
 
 ### every(step, offset)
 
@@ -101,11 +137,11 @@ Create a new collection consisting of every n-th element.
 
 **Parameters**
 
-**step**: `int`, Create a new collection consisting of every n-th element.
+**step**: `int`
 
-**offset**: `int`, Create a new collection consisting of every n-th element.
+**offset**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### except(keys)
 
@@ -113,9 +149,9 @@ Get all items except for those with the specified keys.
 
 **Parameters**
 
-**keys**: `*`, Get all items except for those with the specified keys.
+**keys**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### filter(callback)
 
@@ -123,9 +159,9 @@ Run a filter over each of the items.
 
 **Parameters**
 
-**callback**: `function | null`, Run a filter over each of the items.
+**callback**: `function | null`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### first(callback, default)
 
@@ -133,9 +169,9 @@ Get the first item from the collection.
 
 **Parameters**
 
-**callback**: `function | null`, Get the first item from the collection.
+**callback**: `function | null`
 
-**default**: `*`, Get the first item from the collection.
+**default**: `*`
 
 **Returns**: `*`
 
@@ -145,15 +181,15 @@ Get a flattened array of the items in the collection.
 
 **Parameters**
 
-**depth**: `int`, Get a flattened array of the items in the collection.
+**depth**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### flip()
 
 Flip the items in the collection.
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### forget(keys)
 
@@ -161,9 +197,9 @@ Remove an item from the collection by key.
 
 **Parameters**
 
-**keys**: `string | array`, Remove an item from the collection by key.
+**keys**: `string | array`
 
-**Returns**: , this
+**Returns**: this
 
 ### forPage(page, perPage)
 
@@ -171,11 +207,11 @@ Remove an item from the collection by key.
 
 **Parameters**
 
-**page**: `int`, "Paginate" the collection by slicing it into a smaller collection.
+**page**: `int`
 
-**perPage**: `int`, "Paginate" the collection by slicing it into a smaller collection.
+**perPage**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### get(key, callback)
 
@@ -183,9 +219,9 @@ Get an item from the collection by key.
 
 **Parameters**
 
-**key**: `int`, Get an item from the collection by key.
+**key**: `int`
 
-**callback**: `*`, Get an item from the collection by key.
+**callback**: `*`
 
 **Returns**: `*`
 
@@ -195,11 +231,11 @@ Group an associative array by a field or using a callback.
 
 **Parameters**
 
-**groupBy**: `function | string`, Group an associative array by a field or using a callback.
+**groupBy**: `function | string`
 
-**preserveKeys**: `bool`, Group an associative array by a field or using a callback.
+**preserveKeys**: `bool`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### has(key)
 
@@ -207,9 +243,9 @@ Determine if an item exists in the collection by key.
 
 **Parameters**
 
-**key**: `*`, Determine if an item exists in the collection by key.
+**key**: `*`
 
-**Returns**: , bool
+**Returns**: bool
 
 ### implode(value, glue)
 
@@ -217,11 +253,11 @@ Concatenate values of a given key as a string.
 
 **Parameters**
 
-**value**: `string`, Concatenate values of a given key as a string.
+**value**: `string`
 
-**glue**: `string`, Concatenate values of a given key as a string.
+**glue**: `string`
 
-**Returns**: , string
+**Returns**: string
 
 ### intersect(items)
 
@@ -229,15 +265,15 @@ Intersect the collection with the given items.
 
 **Parameters**
 
-**items**: `*`, Intersect the collection with the given items.
+**items**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### isEmpty()
 
 Determine if the collection is empty or not.
 
-**Returns**: , bool
+**Returns**: bool
 
 ### keyBy(keyBy)
 
@@ -245,15 +281,15 @@ Key an associative array by a field or using a callback.
 
 **Parameters**
 
-**keyBy**: `function | string`, Key an associative array by a field or using a callback.
+**keyBy**: `function | string`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### keys()
 
 Get the keys of the collection items.
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### last(callback, default)
 
@@ -261,9 +297,9 @@ Get the last item from the collection.
 
 **Parameters**
 
-**callback**: `function | null`, Get the last item from the collection.
+**callback**: `function | null`
 
-**default**: `*`, Get the last item from the collection.
+**default**: `*`
 
 **Returns**: `*`
 
@@ -273,9 +309,9 @@ Run a map over each of the items.
 
 **Parameters**
 
-**callback**: `function`, Run a map over each of the items.
+**callback**: `function`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### max(key)
 
@@ -283,7 +319,7 @@ Get the max value of a given key.
 
 **Parameters**
 
-**key**: `string | null`, Get the max value of a given key.
+**key**: `string | null`
 
 **Returns**: `*`
 
@@ -293,9 +329,9 @@ Get the median of a given key.
 
 **Parameters**
 
-**null**: , key
+**null**: key
 
-**Returns**: `*`, |null
+**Returns**: `*`
 
 ### merge(items)
 
@@ -303,9 +339,9 @@ Merge the collection with the given items.
 
 **Parameters**
 
-**items**: `*`, Merge the collection with the given items.
+**items**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### min(key)
 
@@ -313,7 +349,7 @@ Get the min value of a given key.
 
 **Parameters**
 
-**key**: `string | null`, Get the min value of a given key.
+**key**: `string | null`
 
 **Returns**: `*`
 
@@ -323,7 +359,7 @@ Get the mode of a given key.
 
 **Parameters**
 
-**key**: `string | null`, Get the mode of a given key.
+**key**: `string | null`
 
 **Returns**: `Array`
 
@@ -333,7 +369,7 @@ Pass the collection to the given callback and return the result.
 
 **Parameters**
 
-**callback**: `function`, Pass the collection to the given callback and return the result.
+**callback**: `function`
 
 **Returns**: `*`
 
@@ -343,9 +379,9 @@ Get the values of a given key.
 
 **Parameters**
 
-**value**: `string`, Get the values of a given key.
+**value**: `string`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### pop()
 
@@ -359,11 +395,11 @@ Push an item onto the beginning of the collection.
 
 **Parameters**
 
-**value**: `*`, Push an item onto the beginning of the collection.
+**value**: `*`
 
-**key**: `*`, Push an item onto the beginning of the collection.
+**key**: `*`
 
-**Returns**: , this
+**Returns**: this
 
 ### pull(key)
 
@@ -371,9 +407,9 @@ Get and remove an item from the collection.
 
 **Parameters**
 
-**key**: `*`, Get and remove an item from the collection.
+**key**: `*`
 
-**Returns**: , this
+**Returns**: this
 
 ### push(value)
 
@@ -381,9 +417,9 @@ Push an item onto the end of the collection.
 
 **Parameters**
 
-**value**: `*`, Push an item onto the end of the collection.
+**value**: `*`
 
-**Returns**: , this
+**Returns**: this
 
 ### random(amount)
 
@@ -391,7 +427,7 @@ Get one or more items randomly from the collection.
 
 **Parameters**
 
-**amount**: `int`, Get one or more items randomly from the collection.
+**amount**: `int`
 
 **Returns**: `*`
 
@@ -401,9 +437,9 @@ Reduce the collection to a single value.
 
 **Parameters**
 
-**callback**: `function`, Reduce the collection to a single value.
+**callback**: `function`
 
-**initial**: `*`, Reduce the collection to a single value.
+**initial**: `*`
 
 **Returns**: `*`
 
@@ -413,15 +449,15 @@ Create a collection of all elements that do not pass a given truth test.
 
 **Parameters**
 
-**callback**: `function`, Create a collection of all elements that do not pass a given truth test.
+**callback**: `function`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### reverse()
 
 Reverse items order.
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### search(value, strict)
 
@@ -429,9 +465,9 @@ Search the collection for a given value and return the corresponding key if succ
 
 **Parameters**
 
-**value**: `*`, Search the collection for a given value and return the corresponding key if successful.
+**value**: `*`
 
-**strict**: `bool`, Search the collection for a given value and return the corresponding key if successful.
+**strict**: `bool`
 
 **Returns**: `*`
 
@@ -445,7 +481,7 @@ Get and remove the first item from the collection.
 
 Shuffle the items in the collection.
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### slice(offset, length)
 
@@ -453,11 +489,11 @@ Slice the underlying collection array.
 
 **Parameters**
 
-**offset**: `int`, Slice the underlying collection array.
+**offset**: `int`
 
-**length**: `int`, Slice the underlying collection array.
+**length**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### sort(callback)
 
@@ -465,9 +501,9 @@ Sort through each item with a callback.
 
 **Parameters**
 
-**callback**: `function | null`, Sort through each item with a callback.
+**callback**: `function | null`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### sortBy(callback, options, descending)
 
@@ -475,13 +511,13 @@ Sort the collection using the given callback.
 
 **Parameters**
 
-**callback**: `function | string`, Sort the collection using the given callback.
+**callback**: `function | string`
 
-**options**: `int`, Sort the collection using the given callback.
+**options**: `int`
 
-**descending**: `bool`, Sort the collection using the given callback.
+**descending**: `bool`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### sortByDesc(callback, options)
 
@@ -489,11 +525,11 @@ Sort the collection in descending order using the given callback.
 
 **Parameters**
 
-**callback**: `function | string`, Sort the collection in descending order using the given callback.
+**callback**: `function | string`
 
-**options**: `int`, Sort the collection in descending order using the given callback.
+**options**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### splice(offset, length, replacement)
 
@@ -501,13 +537,13 @@ Splice a portion of the underlying collection array.
 
 **Parameters**
 
-**offset**: `int`, Splice a portion of the underlying collection array.
+**offset**: `int`
 
-**length**: `int | null`, Splice a portion of the underlying collection array.
+**length**: `int | null`
 
-**replacement**: `*`, Splice a portion of the underlying collection array.
+**replacement**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### sum(callback)
 
@@ -515,19 +551,19 @@ Get the sum of the given values.
 
 **Parameters**
 
-**callback**: `function | string | null`, Get the sum of the given values.
+**callback**: `function | string | null`
 
 **Returns**: `*`
 
 ### take(limit)
 
-Take the first or last {$limit} items.
+Take the first {limit} items.
 
 **Parameters**
 
-**limit**: `int`, Take the first or last {$limit} items.
+**limit**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### toString(limit)
 
@@ -535,9 +571,9 @@ Converts the items in a string.
 
 **Parameters**
 
-**limit**: `int`, Converts the items in a string.
+**limit**: `int`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### transform(callback)
 
@@ -545,7 +581,7 @@ Transform each item in the collection using a callback.
 
 **Parameters**
 
-**callback**: `function`, Transform each item in the collection using a callback.
+**callback**: `function`
 
 **Returns**: , this
 
@@ -555,9 +591,9 @@ Union the collection with the given items.
 
 **Parameters**
 
-**items**: `*`, Union the collection with the given items.
+**items**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### unique(key, strict)
 
@@ -565,17 +601,17 @@ Return only unique items from the collection array.
 
 **Parameters**
 
-**key**: `string | function | null`, Return only unique items from the collection array.
+**key**: `string | function | null`
 
-**strict**: `bool`, Return only unique items from the collection array.
+**strict**: `bool`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### values()
 
 Reset the keys on the underlying array.
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### where(key, operator, value)
 
@@ -583,13 +619,13 @@ Filter items by the given key value pair.
 
 **Parameters**
 
-**key**: `string`, Filter items by the given key value pair.
+**key**: `string`
 
-**operator**: `*`, Filter items by the given key value pair.
+**operator**: `*`
 
-**value**: `*`, Filter items by the given key value pair.
+**value**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### whereIn(key, values, strict)
 
@@ -597,13 +633,13 @@ Filter items by the given key value pair.
 
 **Parameters**
 
-**key**: `string`, Filter items by the given key value pair.
+**key**: `string`
 
-**values**: `*`, Filter items by the given key value pair.
+**values**: `*`
 
-**strict**: `bool`, Filter items by the given key value pair.
+**strict**: `bool`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### whereInStrict(key, values)
 
@@ -611,11 +647,11 @@ Filter items by the given key value pair using strict comparison.
 
 **Parameters**
 
-**key**: `string`, Filter items by the given key value pair using strict comparison.
+**key**: `string`
 
-**values**: `*`, Filter items by the given key value pair using strict comparison.
+**values**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### whereStrict(key, value)
 
@@ -623,27 +659,27 @@ Filter items by the given key value pair using strict comparison.
 
 **Parameters**
 
-**key**: `string`, Filter items by the given key value pair using strict comparison.
+**key**: `string`
 
-**value**: `*`, Filter items by the given key value pair using strict comparison.
+**value**: `*`
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 ### zip(items)
 
 Zip the collection together with one or more arrays.
 
-e.g. new Collection([1, 2, 3])->zip([4, 5, 6]);
+e.g. new Kollection([1, 2, 3])->zip([4, 5, 6]);
   => [[1, 4], [2, 5], [3, 6]]
 
 **Parameters**
 
 **items**: `array`, Zip the collection together with one or more arrays.
 
-e.g. new Collection([1, 2, 3])->zip([4, 5, 6]);
+e.g. new Kollection([1, 2, 3])->zip([4, 5, 6]);
   => [[1, 4], [2, 5], [3, 6]]
 
-**Returns**: `Collection`
+**Returns**: `Kollection`
 
 
 

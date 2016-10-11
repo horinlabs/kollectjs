@@ -21,8 +21,5 @@
   },
   "homepage": "https://github.com/horinlabs/kollectjs#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "jsdoc": "^3.4.1",
-    "mocha": "^3.0.2"
   }
 }

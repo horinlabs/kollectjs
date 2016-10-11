@@ -1,6 +1,6 @@
 {
   "name": "kollectjs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A small library to work with arrays in Javascript.",
   "main": "lib/main.js",
   "scripts": {
@@ -20,6 +20,5 @@
     "url": "https://github.com/horinlabs/kollectjs/issues"
   },
   "homepage": "https://github.com/horinlabs/kollectjs#readme",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
